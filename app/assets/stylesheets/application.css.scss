@@ -1,0 +1,23 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "posts.scss";
+
+.custom-nav {
+	margin-top: 15px;
+}
+
+.navbar-brand {
+  padding: 0px;
+}
+
+.navbar-brand>img {
+  height: 100%;
+  padding: 15px;
+  width: auto;
+  margin-top: 1rem;
+
+}
+
+.example2 .navbar-brand>img {
+  padding: 7px 15px;
+}
