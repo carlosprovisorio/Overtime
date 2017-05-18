@@ -23,8 +23,10 @@ describe 'navigate' do
       logout(:user)
       user = FactoryGirl.create(:user)
       login_as(user, :scope => :user)
-      
+
       visit edit_post_path(@post)
+
+      expect(page).to_not have_content ("Approved")
     end
   end
 end
