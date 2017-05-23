@@ -32,7 +32,10 @@ describe 'navigate' do
       
       other_user = User.create(first_name: 'Non', last_name: 'Authorized', email: 'nonauth@exanple.com', password: 'asdfasdf', password_confirmation: 'asdfasdf')
       post_from_other_user = Post.create(date: Date.today, rationale: 'asdf', user_id: other_user.id) 
-      byebug
+      
+      visit posts_path
+
+      expect(page).to_not have_content(/This post shouldn't be seen/)
     end
   end
 
@@ -48,6 +51,7 @@ describe 'navigate' do
   describe 'delete' do
     it 'can be deleted' do
       @post = FactoryGirl.create(:post)
+      @post.update(user_id: @user.id)
       visit posts_path
 
       click_link("delete_post_#{@post.id}_from_index")
